@@ -1,0 +1,5 @@
+{
+  "name": "DayFlow Planner",
+  "description": "A frontend-only daily task planner with a live execution timer.",
+  "requestFramePermissions": []
+}
