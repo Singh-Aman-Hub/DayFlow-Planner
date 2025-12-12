@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DayFlow Planner — README</title>
+    <style>
+      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #111827; background: #ffffff; margin: 0; padding: 24px; line-height: 1.6; }
+      header { border-bottom: 1px solid #e5e7eb; padding-bottom: 12px; margin-bottom: 20px; }
+      h1 { margin: 0 0 6px 0; font-size: 28px; color: #0f172a; }
+      p.lead { color: #374151; margin: 0 0 8px 0; }
+      h2 { font-size: 18px; margin-top: 20px; color: #0f172a; }
+      pre { background: #f3f4f6; padding: 12px; border-radius: 6px; overflow: auto; }
+      code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", monospace; }
+      ul { margin: 0 0 12px 20px; }
+      .muted { color: #6b7280; }
+      .box { border: 1px solid #e6e9ee; padding: 12px; border-radius: 8px; background: #fbfbfd; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>DayFlow Planner</h1>
+      <p class="lead">A lightweight web application to plan your day and capture notes. DayFlow helps you understand and allocate your time more intentionally so you can focus on meaningful work.</p>
+    </header>
+
+    <section>
+      <h2>What this project is</h2>
+      <p>DayFlow Planner is a single-page React application built with Vite. It provides a simple planner where users can compose blocks of time, save plans to local history, and keep a scratchpad for notes. Data is persisted in the browser using <code>localStorage</code>, so the application does not require a backend to retain user data.</p>
+    </section>
+
+    <section>
+      <h2>Key benefits</h2>
+      <ul>
+        <li>Helps you gain visibility into your time by planning blocks and viewing saved plans.</li>
+        <li>Lightweight and privacy-first: data is stored locally in the browser.</li>
+        <li>Easy to deploy as a static site (Vite build outputs a <code>dist</code> folder).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Prerequisites</h2>
+      <ul>
+        <li>Node.js (recommended v18 or later)</li>
+        <li>npm or Yarn</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Install and run locally</h2>
+      <p>Clone the repository and install dependencies, then start the Vite dev server:</p>
+      <pre><code># clone the repo
+git clone https://github.com/Singh-Aman-Hub/DayFlow-Planner.git
+cd DayFlow-Planner
+
+# install dependencies (npm)
+npm install
+
+# start development server
+npm run dev
+
+# open the site at the address printed by Vite (usually http://localhost:5173)
+</code></pre>
+      <p class="muted">If you prefer Yarn, replace <code>npm install</code> with <code>yarn</code> and use <code>yarn dev</code>.</p>
+    </section>
+
+    <section>
+      <h2>Build for production</h2>
+      <p>To create an optimized production build:</p>
+      <pre><code>npm run build
+</code></pre>
+      <p>The output directory is <code>dist</code>. Serve files from this directory with any static host or CDN.</p>
+    </section>
+
+    <section>
+      <h2>Deploying to Render (static site)</h2>
+      <p>Recommended fields when creating a new static site on Render:</p>
+      <div class="box">
+        <ul>
+          <li><strong>Branch</strong>: <code>master</code></li>
+          <li><strong>Root Directory</strong>: leave empty (project root)</li>
+          <li><strong>Build Command</strong>: <code>npm install && npm run build</code> (or <code>yarn install && yarn build</code>)</li>
+          <li><strong>Publish Directory</strong>: <code>dist</code></li>
+        </ul>
+      </div>
+      <p>Environment variables that the project reads at build time (optional):</p>
+      <pre><code>GEMINI_API_KEY=&lt;your_api_key&gt;
+</code></pre>
+      <p class="muted">Set <code>GEMINI_API_KEY</code> in the Render dashboard if you use any features that require it. The Vite configuration injects this key at build time into <code>process.env.GEMINI_API_KEY</code> and <code>process.env.API_KEY</code>. Avoid committing secrets to the repository.</p>
+    </section>
+
+    <section>
+      <h2>Data persistence</h2>
+      <p>All user data (current plan, saved history, notes, and current view) are persisted in the browser's <code>localStorage</code> with the following keys:</p>
+      <ul>
+        <li><code>dayflow_current_plan</code></li>
+        <li><code>dayflow_history</code></li>
+        <li><code>dayflow_view</code></li>
+        <li><code>dayflow_notes</code></li>
+      </ul>
+      <p class="muted">There is no server-side persistence by default. If you clear your browser storage or use a different device, saved plans and notes will not be available unless you implement a backend sync.</p>
+    </section>
+
+    <section>
+      <h2>How to configure</h2>
+      <p>Configuration is minimal. The main points to adjust are:</p>
+      <ul>
+        <li>If you want to change the build output folder, add a <code>build.outDir</code> entry to <code>vite.config.ts</code>. If you do, update the Publish Directory in your host to match.</li>
+        <li>To enable any API integration, add the required environment variables to your host's dashboard before building.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Planned features</h2>
+      <ul>
+        <li>Server-side syncing so users can persist plans and notes across devices.</li>
+        <li>Authentication and user accounts for personal plan management.</li>
+        <li>Advanced analytics to show time allocation and productivity insights.</li>
+        <li>Shared plans and collaboration features.</li>
+        <li>Integrations with calendar providers and task managers.</li>
+      </ul>
+      <p class="muted">These features are not yet implemented. The current implementation focuses on local, private planning with a minimal, distraction-free UI.</p>
+    </section>
+
+    <section>
+      <h2>Contributing</h2>
+      <p>Contributions are welcome. Please open issues or pull requests for bugs, improvements, or feature proposals. Prefer small, focused PRs and include tests or a clear manual verification procedure when applicable.</p>
+    </section>
+
+    <section>
+      <h2>License</h2>
+      <p>This repository does not include an explicit license file. Add a license of your choice (for example <code>MIT</code>) if you intend to publish or share the code with others.</p>
+    </section>
+
+    <footer style="margin-top:28px; border-top:1px solid #e5e7eb; padding-top:12px; color:#6b7280; font-size:13px;">
+      <div>Project: DayFlow Planner</div>
+      <div>Repository: https://github.com/Singh-Aman-Hub/DayFlow-Planner</div>
+    </footer>
+  </body>
+</html>
