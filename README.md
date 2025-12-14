@@ -161,12 +161,7 @@ npm run dev
   Keep PRs small and focused when possible.
 </p>
 
-<h2>License</h2>
 
-<p>
-  This repository does not currently include a license file.
-  Add a license (e.g. <code>MIT</code>) if you plan to publish or distribute the code.
-</p>
 
 <hr />
 
